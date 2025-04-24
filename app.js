@@ -1,11 +1,13 @@
 // ---------- Firebase 初期化 ----------
 const firebaseConfig = {
-  /* 同じ config をコピペ */
+  apiKey: "AIzaSyAU8ESmE4c7rpV9E-UhOrJsR3L13i19J04",
+  authDomain: "kamikarute-2ef80.firebaseapp.com",
+  projectId: "kamikarute-2ef80",
+  storageBucket: "kamikarute-2ef80.firebasestorage.app",
+  messagingSenderId: "576153997748",
+  appId: "1:576153997748:web:8643dc7aafed322ee462e1",
+  measurementId: "G-GR2H2BXK2T"
 };
-firebase.initializeApp(firebaseConfig);
-const auth   = firebase.auth();
-const db     = firebase.firestore();
-const store  = firebase.storage().ref();
 
 // ---------- DOM ----------
 const list         = document.getElementById("list");
