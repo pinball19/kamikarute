@@ -1,0 +1,10 @@
+body{font-family:sans-serif;margin:0}
+header{display:flex;gap:8px;padding:8px}
+#list{list-style:none;padding:0;margin:0}
+#list li{display:flex;gap:12px;padding:8px;border-bottom:1px solid #efefef;cursor:pointer}
+.avatar{width:40px;height:40px;border-radius:50%;background:#ddd}
+.fab{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;font-size:24px}
+dialog{width:90%;height:90%;border:none;border-radius:8px;padding:16px}
+center{display:flex;flex-direction:column;gap:8px;align-items:center;margin-top:60px}
+input,textarea{width:100%;padding:8px;margin:4px 0}
+textarea{height:80px}
