@@ -2,43 +2,50 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <title>KamiFree - ログイン</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>KamiFree – 起動</title>
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js"></script>
 </head>
 <body class="center">
-  <h1>KamiFree</h1>
+  <h2>起動中…</h2>
 
-  <input id="email"  type="email"    placeholder="メールアドレス" />
-  <input id="pass"   type="password" placeholder="パスワード"    />
-  <button id="login">ログイン / 新規登録</button>
+<script>
+/* ===== Firebase 初期化 ===== */
+const firebaseConfig = {
+  apiKey: "AIzaSyAU8ESmE4c7rpV9E-UhOrJsR3L13i19J04",
+  authDomain: "kamikarute-2ef80.firebaseapp.com",
+  projectId: "kamikarute-2ef80",
+  storageBucket: "kamikarute-2ef80.firebasestorage.app",
+  messagingSenderId: "576153997748",
+  appId: "1:576153997748:web:8643dc7aafed322ee462e1",
+  measurementId: "G-GR2H2BXK2T"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-  <script>
-  // ---------- Firebase 初期化 ----------
-  const firebaseConfig = {
-    apiKey:        "YOUR_API_KEY",
-    authDomain:    "YOUR_PROJECT.firebaseapp.com",
-    projectId:     "YOUR_PROJECT",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "000000000000",
-    appId:         "1:000000000000:web:xxxxxxxx"
-  };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  // ---------- ログイン / 登録 ----------
-  login.onclick = async () => {
-    const email = email.value.trim();
-    const pass  = pass.value.trim();
-    if (!email || !pass) return alert("入力してください");
-    try {
-      await auth.signInWithEmailAndPassword(email, pass);
-    } catch {
-      await auth.createUserWithEmailAndPassword(email, pass);
-    }
-    location.href = "app.html";
-  };
-  </script>
+/* ===== 匿名で自動ログイン ===== */
+auth.signInAnonymously()
+    .then(()=>location.href = "app.html")
+    .catch(err => alert("起動失敗\n"+err.message));
+
+/* --- 後日メール認証に戻すときは
+     1) ここを削除
+     2) 下記の旧フォームを復活させる
+--------------------------------------------------
+<input id="email"  type="email"    placeholder="メール" />
+<input id="pass"   type="password" placeholder="パスワード" />
+<button id="login">ログイン / 新規登録</button>
+
+login.onclick = async () => {
+  try {
+    await auth.signInWithEmailAndPassword(email.value, pass.value);
+  } catch {
+    await auth.createUserWithEmailAndPassword(email.value, pass.value);
+  }
+  location.href = 'app.html';
+};
+-------------------------------------------------- */
+</script>
 </body>
 </html>
