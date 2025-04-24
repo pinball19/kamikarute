@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>KamiFree - ログイン</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js"></script>
+</head>
+<body class="center">
+  <h1>KamiFree</h1>
+
+  <input id="email"  type="email"    placeholder="メールアドレス" />
+  <input id="pass"   type="password" placeholder="パスワード"    />
+  <button id="login">ログイン / 新規登録</button>
+
+  <script>
+  // ---------- Firebase 初期化 ----------
+  const firebaseConfig = {
+    apiKey:        "YOUR_API_KEY",
+    authDomain:    "YOUR_PROJECT.firebaseapp.com",
+    projectId:     "YOUR_PROJECT",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "000000000000",
+    appId:         "1:000000000000:web:xxxxxxxx"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  // ---------- ログイン / 登録 ----------
+  login.onclick = async () => {
+    const email = email.value.trim();
+    const pass  = pass.value.trim();
+    if (!email || !pass) return alert("入力してください");
+    try {
+      await auth.signInWithEmailAndPassword(email, pass);
+    } catch {
+      await auth.createUserWithEmailAndPassword(email, pass);
+    }
+    location.href = "app.html";
+  };
+  </script>
+</body>
+</html>
