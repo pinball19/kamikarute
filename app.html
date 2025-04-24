@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>KamiFree</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js"></script>
+</head>
+<body>
+  <!-- ------ 顧客一覧 ------ -->
+  <header>
+    <input id="search" placeholder="名前・TEL で検索" />
+    <button id="logout">ログアウト</button>
+  </header>
+
+  <ul id="list"></ul>
+
+  <button id="addCustomer" class="fab">＋</button>
+
+  <!-- ------ 来店記録モーダル ------ -->
+  <dialog id="custDlg">
+    <h2 id="custName"></h2>
+    <ul id="visitList"></ul>
+    <hr />
+    <input type="file" id="photos" multiple accept="image/*" />
+    <textarea id="memo" placeholder="施術メモ"></textarea>
+    <button id="addVisit">記録する</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
