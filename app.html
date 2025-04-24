@@ -3,34 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <title>KamiFree</title>
+
+  <!-- Firebase Compat SDK（Auth・Firestore・Storage使用）-->
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-storage-compat.js"></script>
+
   <link rel="stylesheet" href="style.css" />
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js"></script>
 </head>
 <body>
-  <!-- ------ 顧客一覧 ------ -->
+  <!-- ヘッダー -->
   <header>
-    <input id="search" placeholder="名前・TEL で検索" />
-    <button id="logout">ログアウト</button>
+    <input id="search" placeholder="名前・TEL で検索">
+    <button id="logout">ログアウト</button><!-- ← 現段階では非表示 (app.js 内で隠す) -->
   </header>
 
+  <!-- 顧客一覧 -->
   <ul id="list"></ul>
 
+  <!-- 顧客追加フローティングボタン -->
   <button id="addCustomer" class="fab">＋</button>
 
-  <!-- ------ 来店記録モーダル ------ -->
+  <!-- 顧客詳細／来店履歴ダイアログ -->
   <dialog id="custDlg">
     <h2 id="custName"></h2>
     <ul id="visitList"></ul>
-    <hr />
-    <input type="file" id="photos" multiple accept="image/*" />
+    <hr>
+    <input id="photos" type="file" multiple accept="image/*">
     <textarea id="memo" placeholder="施術メモ"></textarea>
     <button id="addVisit">記録する</button>
   </dialog>
 
+  <!-- ビジネスロジック -->
   <script src="app.js"></script>
 </body>
 </html>
